@@ -123,9 +123,9 @@ project.ext.diffChangelogFile = "src/main/resources/config/liquibase/changelog/"
 liquibase {
     activities {
         main {
-            driver "org.mariadb.jdbc.Driver"
-            url "jdbc:mariadb://localhost:3306/jhipster"
-            username ""
+            driver "org.postgresql.Driver"
+            url "jdbc:postgresql://localhost:5432/jhipster"
+            username "jhipster"
             password ""
             changeLogFile "src/main/resources/config/liquibase/master.xml"
             defaultSchemaName ""
@@ -133,12 +133,12 @@ liquibase {
             classpath "src/main/resources/"
         }
         diffLog {
-            driver "org.mariadb.jdbc.Driver"
-            url "jdbc:mariadb://localhost:3306/jhipster"
-            username ""
+            driver "org.postgresql.Driver"
+            url "jdbc:postgresql://localhost:5432/jhipster"
+            username "jhipster"
             password ""
             changeLogFile project.ext.diffChangelogFile
-            referenceUrl "hibernate:spring:tech.jhipster.sample.domain?dialect=org.hibernate.dialect.MariaDB103Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+            referenceUrl "hibernate:spring:tech.jhipster.sample.domain?dialect=tech.jhipster.domain.util.FixedPostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
             defaultSchemaName ""
             logLevel "debug"
             classpath "$buildDir/classes/java/main"
