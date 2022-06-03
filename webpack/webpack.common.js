@@ -31,7 +31,7 @@ module.exports = async (env, options) => {
         app: './src/main/webapp/app/main.ts',
       },
       output: {
-        path: resolve('target/classes/static/'),
+        path: resolve('build/resources/main/static/'),
       },
       resolve: {
         extensions: ['.ts', '.js', '.vue', '.json'],
@@ -42,7 +42,7 @@ module.exports = async (env, options) => {
       },
       devServer: {
         static: {
-          directory: './target/classes/static/',
+          directory: './build/resources/main/static/',
         },
         port: 9060,
         proxy: [
@@ -57,7 +57,7 @@ module.exports = async (env, options) => {
       cache: {
         // 1. Set cache type to filesystem
         type: 'filesystem',
-        cacheDirectory: resolve('target/webpack'),
+        cacheDirectory: resolve('build/webpack'),
         buildDependencies: {
           // 2. Add your config as buildDependency to get cache invalidation on config change
           config: [

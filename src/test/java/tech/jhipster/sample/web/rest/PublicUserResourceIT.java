@@ -5,8 +5,6 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,9 +16,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import tech.jhipster.sample.IntegrationTest;
-import tech.jhipster.sample.domain.Authority;
 import tech.jhipster.sample.domain.User;
-import tech.jhipster.sample.repository.AuthorityRepository;
 import tech.jhipster.sample.repository.UserRepository;
 import tech.jhipster.sample.repository.search.UserSearchRepository;
 import tech.jhipster.sample.security.AuthoritiesConstants;
@@ -55,9 +51,6 @@ class PublicUserResourceIT {
     @Autowired
     private MockMvc restUserMockMvc;
 
-    @Autowired
-    private AuthorityRepository authorityRepository;
-
     private User user;
 
     @BeforeEach
@@ -91,15 +84,6 @@ class PublicUserResourceIT {
     @Test
     @Transactional
     void getAllAuthorities() throws Exception {
-        Set<Authority> authorities = new HashSet<>();
-        Authority admin = new Authority();
-        admin.setName(AuthoritiesConstants.ADMIN);
-        Authority user = new Authority();
-        user.setName(AuthoritiesConstants.USER);
-        authorities.add(admin);
-        authorities.add(user);
-        authorityRepository.saveAll(authorities);
-
         restUserMockMvc
             .perform(get("/api/authorities").accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())

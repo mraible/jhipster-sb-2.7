@@ -28,8 +28,8 @@ module.exports = async on => {
 
   on('task', {
     lighthouse: lighthouse(lighthouseReport => {
-      !fs.existsSync('target/cypress') && fs.mkdirSync('target/cypress', { recursive: true });
-      fs.writeFileSync('target/cypress/lhreport.html', ReportGenerator.generateReport(lighthouseReport.lhr, 'html'));
+      !fs.existsSync('build/cypress') && fs.mkdirSync('build/cypress', { recursive: true });
+      fs.writeFileSync('build/cypress/lhreport.html', ReportGenerator.generateReport(lighthouseReport.lhr, 'html'));
     }),
     pa11y: pa11y(),
   });

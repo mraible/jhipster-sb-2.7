@@ -6,7 +6,7 @@
   "integrationFolder": "src/test/javascript/cypress/integration",
   "fixturesFolder": "src/test/javascript/cypress/fixtures",
   "pluginsFile": "src/test/javascript/cypress/plugins/index.ts",
-  "screenshotsFolder": "target/cypress/screenshots",
+  "screenshotsFolder": "build/cypress/screenshots",
   "chromeWebSecurity": true,
   "viewportWidth": 1200,
   "viewportHeight": 720,

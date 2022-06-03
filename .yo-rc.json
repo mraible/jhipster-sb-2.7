@@ -4,7 +4,7 @@
     "authenticationType": "jwt",
     "baseName": "jhipster",
     "blueprints": [],
-    "buildTool": "maven",
+    "buildTool": "gradle",
     "cacheProvider": "ehcache",
     "clientFramework": "vue",
     "clientPackageManager": "npm",

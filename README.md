@@ -40,7 +40,7 @@ Run the following commands in two separate terminals to create a blissful develo
 auto-refreshes when files change on your hard drive.
 
 ```
-./mvnw
+./gradlew -x webapp
 npm start
 ```
 
@@ -102,14 +102,14 @@ docker-compose -f src/main/docker/jhipster-control-center.yml up
 To build the final jar and optimize the jhipster application for production, run:
 
 ```
-./mvnw -Pprod clean verify
+./gradlew -Pprod clean bootJar
 ```
 
 This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
 To ensure everything worked, run:
 
 ```
-java -jar target/*.jar
+java -jar build/libs/*.jar
 ```
 
 Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
@@ -121,7 +121,7 @@ Refer to [Using JHipster in production][] for more details.
 To package your application as a war in order to deploy it to an application server, run:
 
 ```
-./mvnw -Pprod,war clean verify
+./gradlew -Pprod -Pwar clean bootWar
 ```
 
 ## Testing
@@ -129,7 +129,7 @@ To package your application as a war in order to deploy it to an application ser
 To launch your application's tests, run:
 
 ```
-./mvnw verify
+./gradlew test integrationTest jacocoTestReport
 ```
 
 ### Client tests
@@ -141,13 +141,13 @@ npm test
 ```
 
 UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress](src/test/javascript/cypress)
-and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`npm run e2e`) in a second one.
+and can be run by starting Spring Boot in one terminal (`./gradlew bootRun`) and running the tests (`npm run e2e`) in a second one.
 
 #### Lighthouse audits
 
 You can execute automated [lighthouse audits][https://developers.google.com/web/tools/lighthouse/] with [cypress audits][https://github.com/mfrachet/cypress-audit] by running `npm run e2e:cypress:audits`.
 You should only run the audits when your application is packaged with the production profile.
-The lighthouse report is created in `target/cypress/lhreport.html`
+The lighthouse report is created in `build/cypress/lhreport.html`
 
 ### Other tests
 
@@ -167,18 +167,12 @@ docker-compose -f src/main/docker/sonar.yml up -d
 
 Note: we have turned off authentication in [src/main/docker/sonar.yml](src/main/docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
 
-You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven plugin.
+You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the gradle plugin.
 
 Then, run a Sonar analysis:
 
 ```
-./mvnw -Pprod clean verify sonar:sonar
-```
-
-If you need to re-run the Sonar phase, please be sure to specify at least the `initialize` phase since Sonar properties are loaded from the sonar-project.properties file.
-
-```
-./mvnw initialize sonar:sonar
+./gradlew -Pprod clean check jacocoTestReport sonarqube
 ```
 
 For more information, refer to the [Code quality page][].
