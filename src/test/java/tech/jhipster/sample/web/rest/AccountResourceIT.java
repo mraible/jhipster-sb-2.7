@@ -11,7 +11,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -19,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import tech.jhipster.sample.IntegrationTest;
 import tech.jhipster.sample.config.Constants;
-import tech.jhipster.sample.config.SecurityConfiguration;
+import tech.jhipster.sample.domain.Authority;
 import tech.jhipster.sample.domain.User;
 import tech.jhipster.sample.repository.AuthorityRepository;
 import tech.jhipster.sample.repository.UserRepository;
@@ -84,6 +83,9 @@ class AccountResourceIT {
     void testGetExistingAccount() throws Exception {
         Set<String> authorities = new HashSet<>();
         authorities.add(AuthoritiesConstants.ADMIN);
+        Authority admin = new Authority();
+        admin.setName(AuthoritiesConstants.ADMIN);
+        authorityRepository.save(admin);
 
         AdminUserDTO user = new AdminUserDTO();
         user.setLogin(TEST_USER_LOGIN);
@@ -355,6 +357,10 @@ class AccountResourceIT {
     @Test
     @Transactional
     void testRegisterAdminIsIgnored() throws Exception {
+        Authority user = new Authority();
+        user.setName(AuthoritiesConstants.USER);
+        authorityRepository.save(user);
+
         ManagedUserVM validUser = new ManagedUserVM();
         validUser.setLogin("badguy");
         validUser.setPassword("password");

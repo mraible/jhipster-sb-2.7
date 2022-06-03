@@ -950,12 +950,12 @@
                     <optional>true</optional>
                 </dependency>
                 <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
+                    <groupId>org.mariadb.jdbc</groupId>
+                    <artifactId>mariadb-java-client</artifactId>
                 </dependency>
                 <dependency>
                     <groupId>org.testcontainers</groupId>
-                    <artifactId>mysql</artifactId>
+                    <artifactId>mariadb</artifactId>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -1003,12 +1003,12 @@
                             <configuration>
                                 <changeLogFile>${project.basedir}/src/main/resources/config/liquibase/master.xml</changeLogFile>
                                 <diffChangeLogFile>${project.basedir}/src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
-                                <driver>com.mysql.cj.jdbc.Driver</driver>
-                                <url>jdbc:mysql://localhost:3306/jhipster</url>
-                                <defaultSchemaName>jhipster</defaultSchemaName>
-                                <username>root</username>
+                                <driver>org.mariadb.jdbc.Driver</driver>
+                                <url>jdbc:mariadb://localhost:3306/jhipster</url>
+                                <defaultSchemaName></defaultSchemaName>
+                                <username></username>
                                 <password></password>
-                                <referenceUrl>hibernate:spring:tech.jhipster.sample.domain?dialect=org.hibernate.dialect.MySQL8Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
+                                <referenceUrl>hibernate:spring:tech.jhipster.sample.domain?dialect=org.hibernate.dialect.MariaDB103Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                                 <verbose>true</verbose>
                                 <logging>debug</logging>
                                 <contexts>!test</contexts>
@@ -1049,12 +1049,12 @@
             <dependencies>
                 <dependency>
                     <groupId>org.testcontainers</groupId>
-                    <artifactId>mysql</artifactId>
+                    <artifactId>mariadb</artifactId>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
+                    <groupId>org.mariadb.jdbc</groupId>
+                    <artifactId>mariadb-java-client</artifactId>
                 </dependency>
             </dependencies>
             <build>
@@ -1098,12 +1098,12 @@
                             <configuration>
                                 <changeLogFile>${project.basedir}/src/main/resources/config/liquibase/master.xml</changeLogFile>
                                 <diffChangeLogFile>${project.basedir}/src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
-                                <driver>com.mysql.cj.jdbc.Driver</driver>
-                                <url>jdbc:mysql://localhost:3306/jhipster</url>
-                                <defaultSchemaName>jhipster</defaultSchemaName>
-                                <username>root</username>
+                                <driver>org.mariadb.jdbc.Driver</driver>
+                                <url>jdbc:mariadb://localhost:3306/jhipster</url>
+                                <defaultSchemaName></defaultSchemaName>
+                                <username></username>
                                 <password></password>
-                                <referenceUrl>hibernate:spring:tech.jhipster.sample.domain?dialect=org.hibernate.dialect.MySQL8Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
+                                <referenceUrl>hibernate:spring:tech.jhipster.sample.domain?dialect=org.hibernate.dialect.MariaDB103Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                                 <verbose>true</verbose>
                                 <logging>debug</logging>
                                 <contexts>!test</contexts>

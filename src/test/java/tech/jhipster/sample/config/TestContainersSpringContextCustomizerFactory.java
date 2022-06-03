@@ -39,7 +39,7 @@ public class TestContainersSpringContextCustomizerFactory implements ContextCust
                     if (null == devTestContainer) {
                         try {
                             Class<? extends SqlTestContainer> containerClass = (Class<? extends SqlTestContainer>) Class.forName(
-                                this.getClass().getPackageName() + ".MysqlTestContainer"
+                                this.getClass().getPackageName() + ".MariadbTestContainer"
                             );
                             devTestContainer = beanFactory.createBean(containerClass);
                             beanFactory.registerSingleton(containerClass.getName(), devTestContainer);
@@ -52,7 +52,7 @@ public class TestContainersSpringContextCustomizerFactory implements ContextCust
                         testValues.and(
                             "spring.datasource.url=" +
                             devTestContainer.getTestContainer().getJdbcUrl() +
-                            "?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true"
+                            "?useLegacyDatetimeCode=false&serverTimezone=UTC"
                         );
                     testValues = testValues.and("spring.datasource.username=" + devTestContainer.getTestContainer().getUsername());
                     testValues = testValues.and("spring.datasource.password=" + devTestContainer.getTestContainer().getPassword());
@@ -65,7 +65,7 @@ public class TestContainersSpringContextCustomizerFactory implements ContextCust
                     if (null == prodTestContainer) {
                         try {
                             Class<? extends SqlTestContainer> containerClass = (Class<? extends SqlTestContainer>) Class.forName(
-                                this.getClass().getPackageName() + ".MysqlTestContainer"
+                                this.getClass().getPackageName() + ".MariadbTestContainer"
                             );
                             prodTestContainer = beanFactory.createBean(containerClass);
                             beanFactory.registerSingleton(containerClass.getName(), prodTestContainer);
@@ -78,7 +78,7 @@ public class TestContainersSpringContextCustomizerFactory implements ContextCust
                         testValues.and(
                             "spring.datasource.url=" +
                             prodTestContainer.getTestContainer().getJdbcUrl() +
-                            "?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true"
+                            "?useLegacyDatetimeCode=false&serverTimezone=UTC"
                         );
                     testValues = testValues.and("spring.datasource.username=" + prodTestContainer.getTestContainer().getUsername());
                     testValues = testValues.and("spring.datasource.password=" + prodTestContainer.getTestContainer().getPassword());

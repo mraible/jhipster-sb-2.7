@@ -7,20 +7,20 @@ services:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:mysql://jhipster-mysql:3306/jhipster?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-      - SPRING_LIQUIBASE_URL=jdbc:mysql://jhipster-mysql:3306/jhipster?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://jhipster-mariadb:3306/jhipster?useLegacyDatetimeCode=false&serverTimezone=UTC
+      - SPRING_LIQUIBASE_URL=jdbc:mariadb://jhipster-mariadb:3306/jhipster?useLegacyDatetimeCode=false&serverTimezone=UTC
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
       - SPRING_ELASTICSEARCH_URIS=http://jhipster-elasticsearch:9200
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
       - 127.0.0.1:8080:8080
-  jhipster-mysql:
-    image: mysql:8.0.29
+  jhipster-mariadb:
+    image: mariadb:10.8.3
     # volumes:
     #   - ~/volumes/jhipster/jhipster/mysql/:/var/lib/mysql/
     volumes:
-      - ./config/mysql:/etc/mysql/conf.d
+      - ./config/mariadb:/etc/mysql/conf.d
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=jhipster

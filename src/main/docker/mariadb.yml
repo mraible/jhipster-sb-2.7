@@ -1,11 +1,11 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 version: '3.8'
 services:
-  jhipster-mysql:
-    image: mysql:8.0.29
-    platform: linux/x86_64
+  jhipster-mariadb:
+    image: mariadb:10.8.3
     volumes:
-      - ./config/mysql:/etc/mysql/conf.d
+      - ./config/mariadb:/etc/mysql/conf.d
+    # volumes:
     #   - ~/volumes/jhipster/jhipster/mysql/:/var/lib/mysql/
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
